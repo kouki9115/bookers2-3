@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :books, dependent: :destroy
+  
+ validates :name, presence: true
+ validates :introduction, presence: true
 
 end
