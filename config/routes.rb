@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   
   root to: 'homes#top'
+  get "about" => "top#about" , as: "about"
 
   resources :books
-  resources :users
+  resources :users, onry:[:show, :index, :new, :create, :edit]
   
 end

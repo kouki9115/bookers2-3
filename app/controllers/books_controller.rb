@@ -6,13 +6,17 @@ class BooksController < ApplicationController
   def create
     @books=Book.all
     @book=Book.new(book_params)
-    @book.save
+    @book.user_id = current_user.id 
+    if @book.save
     redirect_to books_path(@book.id)
+    else
+    render :index
+    end 
   end
 
   def index
-    @books=Book.all
     @book=Book.new
+    @books=Book.all
   end
   
   def show
@@ -34,7 +38,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
   protect_from_forgery with: :null_session
-
 end
