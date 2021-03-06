@@ -1,14 +1,4 @@
-<h1>Users#edit</h1>
-
-<h1>画像投稿フォーム</h1>
-<%= form_with model: @user, local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :user_image %>
-
-  <%= f.submit '投稿' %>
-<% end %>
-
-    <main>
+<main>
         <p id="notice"></p>
         <div class="container">
   <div class="row">
