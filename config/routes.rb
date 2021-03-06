@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get "about" => "top#about" , as: "about"
 
   resources :books
-  resources :users, onry:[:show, :index, :new, :create, :edit]
+  resources :users, onry:[:show, :index, :new, :create, :edit, :update]
   
 end

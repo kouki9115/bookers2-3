@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
   def index
-    @books=Book.all
     @book=Book.new
     @users=User.all
   end
 
   def show
     @user = User.find(params[:id])
+
+    
     @book = Book.find(params[:id])
     @books=Book.all
-    @book=Book.new
+    @new_book=Book.new
   end
 
   def edit
+    @user=User.all
   end
   
   def new
@@ -30,9 +32,15 @@ class UsersController < ApplicationController
     end  
   end
   
+   def update
+   @user=User.new(user_params)
+   @user.save
+   redirect_to users_path(@user.id)
+   end
+  
   private
-  def book_params
-    params.require(:book).permit(:title, :body)
+  def user_params
+    params.require(:user).permit(:name, :introduction, :image_id)
   end
   
   protect_from_forgery with: :null_session
