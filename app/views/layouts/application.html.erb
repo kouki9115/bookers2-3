@@ -20,9 +20,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <li><a class="fas fa-home nav-link text-light" href="/users/:id"> Home</a></li>
-          <li><a class="fas fa-users nav-link text-light" href="/users"> Users</a></li>
-          <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
+          <li class="fas fa-home nav-link text-light"><%= link_to "Home", user_path(current_user) %></li>
+          <li class="fas fa-users nav-link text-light"><%= link_to "Users", '/users' %></li>
+          <li class="fas fa-book-open nav-link text-light"><%= link_to "Books", '/books' %></li>
           <li><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
         </ul>
       </div>

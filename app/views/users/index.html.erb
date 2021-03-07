@@ -4,18 +4,19 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-     
-        <table class="table">
-         <tbody>
+       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %> 
+      <table class="table">
+        <tbody>
+         <% @users.each do |user| %>
          <tr>
           <th>name</th>
-	         <th>user.name</th>
+	         <th><%= user.name %></th>
          </tr>
           <tr>
-              
-	          <th>introduction</th>
-	          <th></th>
+          <th>introduction</th>
+	         <th><%= user.introduction %></th>
           </tr>
+         <% end %>
          </tbody>
        </table>
 <div class="row">

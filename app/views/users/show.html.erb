@@ -4,22 +4,21 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg">
+       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %> 
       <table class="table">
         <tbody>
          <tr>
           <th>name</th>
-	         <th>user.name</th>
+	         <th><%= @user.name %></th>
          </tr>
           <tr>
-              
-	          <th>introduction</th>
-	          <th></th>
+          <th>introduction</th>
+	         <th><%= @user.introduction %></th>
           </tr>
          </tbody>
        </table>
 <div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_24330" href="/users/:id/edit"></a>
+  <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_24330" href="/users/show/edit"></a>
 </div>
 
       
@@ -31,26 +30,27 @@
  <% end %>
  <% end %>
 
-<form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="Ud9rqQ/LJjC/9q2CNcgVEprhX3H1ZLY8knlhILEVfosgCV1+S7+eHZ+mTmQW/eThLlCMSYt1nGfSUzIGuiayBA==">
- <div class="form-group">
-    <label for="book_title">Title</label>
-    <input class="form-control book_title" type="text" name="book[title]" id="book_title">
-  </div>
-  <div class="form-group">
-    <label for="book_opinion">Opinion</label>
-    <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-  </div>
-  <div class="form-group">
-    <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-  </div>
- </form>
-</div>
+
+       <%= form_with model: @book, local:true do |f| %>
+         
+          <h4>Title</h4>
+          <%= f.text_field :title %></br>
+        
+       
+          <h4>Body</h4>
+          <%= f.text_area :body %>
+       
+       
+          <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+     
+       <% end %>
+    </div>
+
 
 
 <div class="col-md-8 offset-md-1">
  <h2>Books</h2>
  <table class="table table-hover table-inverse">
- <table>
  <thead>
   <tr>
    <th>Title</th>
@@ -62,13 +62,15 @@
   <tbody>
   <% @books.each do |book| %>
    <tr>
-    <td><%= book.title %></td>
-    <td><%= book.body %></td>
+    <th><%= book.title %></th>
+    <th><%= book.body %></th>
    </tr>
   <% end %>
   </tbody>
 </table>
-
+ 
+  </div>
+</div>
 
 </main>
 
