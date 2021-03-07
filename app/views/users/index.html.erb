@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg">
-      <table class="table">
-        <tbody>
+     
+        <table class="table">
+         <tbody>
          <tr>
           <th>name</th>
 	         <th>user.name</th>
@@ -61,7 +61,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.image %></td>
+        <td> <%= attachment_image_tag user, :profile_image, :fill, 60, 60 %></td>
         <td><%= user.name %></td>
         <td></td>
       </tr>
