@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @book=Book.new
     @users=User.all
     @user = current_user
+ 
   end
 
   def show
