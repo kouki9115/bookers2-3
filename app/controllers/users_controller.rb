@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :baria_user, only: [:edit,:update]
+  
   def index
     @book=Book.new
     @users=User.all
@@ -35,12 +37,15 @@ class UsersController < ApplicationController
     end  
   end
   
-  def update
+def update
    @user=User.find(params[:id])
-  @user.update(user_params)
+   if @user.update(user_params)
     flash[:notice] = "You have updated user successfully."
    redirect_to user_path(@user.id)
-  end
+   else
+   render :edit
+   end
+end
   
   private
   def user_params
@@ -49,4 +54,9 @@ class UsersController < ApplicationController
   
   protect_from_forgery with: :null_session
   
+   def baria_user
+  	unless params[:id].to_i == current_user.id
+  		redirect_to user_path(current_user)
+  	end
+   end
 end
