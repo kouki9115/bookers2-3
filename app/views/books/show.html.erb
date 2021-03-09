@@ -57,8 +57,8 @@
              <% end %>
     </td>
     <td><%= @book.body %></td>
-    <td><%= link_to "Edit", edit_book_path(@book) %></td>
-  　<td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+    <td class="btn btn-sm btn-success"><%= link_to "Edit", edit_book_path(@book) %></td>
+    <td class="btn btn-sm btn-danger"><%= link_to "Destroy", book_path(@book), method: :delete %></td>
    </tr>
   </tbody>
 </table>
