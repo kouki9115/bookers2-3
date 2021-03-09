@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
       <table class="table">
         <tbody>
          <tr>
@@ -18,7 +18,7 @@
          </tbody>
        </table>
 <div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_24330" href="/users/show/edit"></a>
+  <%= link_to "", edit_user_path(@user),class:"btn btn-outline-secondary btn-block fas fa-user-cog edit_user"%>
 </div>
 
 
@@ -57,8 +57,8 @@
              <% end %>
     </td>
     <td><%= @book.body %></td>
-    <td class="btn btn-sm btn-success"><%= link_to "Edit", edit_book_path(@book) %></td>
-    <td class="btn btn-sm btn-danger"><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+    <td><%= link_to "Edit", edit_book_path(@book),class:"btn btn-sm btn-success"%></td>
+    <td><%= link_to "Destroy", book_path(@book), method: :delete,class:"btn btn-sm btn-danger"%></td>
    </tr>
   </tbody>
 </table>
